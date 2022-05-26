@@ -7,4 +7,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\imori_128x128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\imori_128x128.png" />
+  </ItemGroup>
+
 </Project>
