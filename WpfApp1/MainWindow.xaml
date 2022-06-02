@@ -5,14 +5,120 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Image training" Height="450" Width="800" >
+        Title="Image training"
+        Height="650"
+        Width="1000" >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="53*"/>
-        </Grid.ColumnDefinitions>
-        <Button Content="画像読み込み" HorizontalAlignment="Left" Margin="27,19,0,0" VerticalAlignment="Top" Height="24" Width="78" Click="hellowwindowbutton_Click"/>
-        <Image Source="Images\imori_128x128.png" Stretch="UniformToFill" Margin="79,124,57,83" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel
+                Orientation="Horizontal">
+                <StackPanel>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                Grid.Column="0"
+                                Content="Q1-Q10"
+                                Command="{Binding ChangeFromQ1ToQ10}"
+                                Margin="5" />
+                            <Button
+                                Grid.Column="1"
+                                Content="Q11-Q20"
+                                Command="{Binding ChangeFromQ11ToQ20}"
+                                Margin="5" />
+                            <Button
+                                Grid.Column="2"
+                                Content="Q21-Q30"
+                                Command="{Binding ChangeFromQ21ToQ30}"
+                                Margin="5" />
+
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                Grid.Column="0"
+                                Content="Q31-Q40"
+                                Command="{Binding ChangeFromQ31ToQ40}"
+                                Margin="5" />
+                            <Button
+                                Grid.Column="1"
+                                Content="Q41-Q50"
+                                Command="{Binding ChangeFromQ41ToQ50}"
+                                Margin="5" />
+                            <Button
+                                Grid.Column="2"
+                                Content="Q51-Q60"
+                                Command="{Binding ChangeFromQ51ToQ60}"
+                                Margin="5" />
+                        </Grid>
+
+                    </Grid>
+                </StackPanel>
+                <StackPanel
+                    Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+                    <TextBlock
+                        Text="処理選択"
+                        Margin="10 0 0 0"/>
+                    <ComboBox
+                        Width="200"
+                        Height="30"
+                        Margin="10 0 0 0"
+                        SelectedIndex="0"
+                        ItemsSource="{Binding ProcMode}"
+                        SelectedValue="{Binding SelectMode}"
+                        SelectedValuePath="Key"
+                        DisplayMemberPath="Value" />
+                    <Button
+                        Content="実行"
+                        Width="100"
+                        Command="{Binding ProcStart}"
+                        HorizontalAlignment="Right"
+                        Margin="0 10 10 0"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Image Source="Images\imori_128x128.png" 
+                       Margin="10"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Image Source="Images\imori_128x128.png" 
+                       Margin="10"/>
+            </Grid>
+            
+        </Grid>
+        <Grid Grid.Row="2">
+            <TextBlock
+                Text="{Binding ExecTime}"
+                HorizontalAlignment="Right"
+                Width="70"
+                Margin="0 0 0 10"
+                TextAlignment="Right"/>
+        </Grid>
 
     </Grid>
 
